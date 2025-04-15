@@ -18,7 +18,7 @@ class PetRepository:
     def delete_pet(self, name: str) -> None:
         with self.__db_connection as database:
             try:
-                pet = database.session.query(PetsTable).filter(PetsTable.name == name).one()
+                pet = database.session.query(PetsTable).filter(PetsTable.name == name).first()
                 database.session.delete(pet)
                 database.session.commit()
             except Exception as exception:
