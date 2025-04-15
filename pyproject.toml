@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "mock-alchemy>=0.2.6",
     "pre-commit>=4.2.0",
     "pylint>=3.3.6",
     "pytest>=8.3.5",
