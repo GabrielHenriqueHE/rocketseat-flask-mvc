@@ -2,8 +2,9 @@ from typing import List
 from sqlalchemy.orm.exc import NoResultFound
 
 from src.models.sqlite.entities.pet import PetsTable
+from src.models.sqlite.interfaces.pet_repository import PetRepositoryInterface
 
-class PetRepository:
+class PetRepository(PetRepositoryInterface):
     def __init__(self, db_connection):
         self.__db_connection = db_connection
 
