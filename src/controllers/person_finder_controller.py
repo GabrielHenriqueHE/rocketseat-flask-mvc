@@ -1,5 +1,6 @@
 
 from .interfaces.person_finder_controller import PersonFinderControllerInterface
+from src.errors.errortypes.http_not_found import HttpNotFoundError
 from src.models.sqlite.entities.people import PeopleTable
 from src.models.sqlite.repositories.people_repository import PeopleRepositoryInterface
 
@@ -16,7 +17,7 @@ class PersonFinderController(PersonFinderControllerInterface):
         person = self.__people_repository.get_person(person_id)
 
         if not person:
-            raise ValueError('Pessoa não encontrada!')
+            raise HttpNotFoundError('Pessoa não encontrada!')
 
         return person
         

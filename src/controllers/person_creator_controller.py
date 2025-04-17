@@ -1,6 +1,7 @@
 import re
 
 from .interfaces.person_creator_controller import PersonCreatorControllerInterface
+from src.errors.errortypes.http_bad_request import HttpBadRequestError
 from src.models.sqlite.interfaces.people_repository import PeopleRepositoryInterface
 
 class PersonCreatorController(PersonCreatorControllerInterface):
@@ -28,7 +29,7 @@ class PersonCreatorController(PersonCreatorControllerInterface):
         non_valid_characters = re.compile(r'[^a-zA-Z]')
 
         if non_valid_characters.search(first_name) or non_valid_characters.search(last_name):
-            raise ValueError("Os nomes só podem conter letras!")
+            raise HttpBadRequestError("Os nomes só podem conter letras!")
         
     def __format_response(self, person_info: dict) -> dict:
         return {
