@@ -21,8 +21,6 @@ class PetFinderController(PetFinderControllerInterface):
         formatted_pets = []
 
         for pet in pets:
-            print('pet', pet)
-
             formatted_pets.append({
                 'id': pet.id,
                 'name': pet.name
