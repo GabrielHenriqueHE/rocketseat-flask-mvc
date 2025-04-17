@@ -1,6 +1,7 @@
 import pytest
 
 from src.controllers.person_creator_controller import PersonCreatorController
+from src.errors.errortypes.http_bad_request import HttpBadRequestError
 
 class MockPeopleRepository:
     def __init__(self):
@@ -32,13 +33,13 @@ def test_create_person_with_error():
     controller = PersonCreatorController(MockPeopleRepository())
 
     person = {
-        'first_name': 'Joh 12n',
+        'first_name': 'Jo12 hn',
         'last_name': 'Doe',
         'age': 30,
         'pet_id': 1
     }
 
-    with pytest.raises(ValueError) as exc:
+    with pytest.raises(HttpBadRequestError) as exc:
         controller.create(person)
 
     assert str(exc.value) == 'Os nomes só podem conter letras!'
